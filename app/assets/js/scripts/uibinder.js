@@ -18,7 +18,6 @@ const VIEWS = {
     landing: '#landingContainer',
     login: '#loginContainer',
     settings: '#settingsContainer',
-    welcome: '#welcomeContainer'
 }
 
 // The currently shown view container.
@@ -74,21 +73,16 @@ function showMainUI(data){
 
         // If this is enabled in a development environment we'll get ratelimited.
         // The relaunch frequency is usually far too high.
-        if(!isDev && isLoggedIn){
+        if(/*!isDev &&*/ isLoggedIn){
             validateSelectedAccount()
         }
 
-        if(ConfigManager.isFirstLaunch()){
-            currentView = VIEWS.welcome
-            $(VIEWS.welcome).fadeIn(1000)
+        if(isLoggedIn){
+            currentView = VIEWS.landing
+            $(VIEWS.landing).fadeIn(1000)
         } else {
-            if(isLoggedIn){
-                currentView = VIEWS.landing
-                $(VIEWS.landing).fadeIn(1000)
-            } else {
-                currentView = VIEWS.login
-                $(VIEWS.login).fadeIn(1000)
-            }
+            currentView = VIEWS.login
+            $(VIEWS.login).fadeIn(1000)
         }
 
         setTimeout(() => {

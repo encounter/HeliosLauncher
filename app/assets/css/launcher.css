@@ -501,15 +501,21 @@ body, button {
     font-size: 12px;
     letter-spacing: 1px;
     font-weight: bold;
+    text-transform: uppercase;
 }
 
 /* Container to organize login field elements. */
 .loginFieldContainer {
     position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
+
+    margin-bottom: 20px;
+    border-width: 0 0 1.5px 0;
+    border-style: solid;
+    border-color: #fff;
 }
 
 /* SVG icons on the login view. */
@@ -525,10 +531,11 @@ body, button {
     font-weight: bold;
     font-size: 8px;
     color: #ff1b0c;
-    width: 100%;
+    width: auto;
     text-align: right;
     position: absolute;
     top: 7px;
+    right: 0px;
     opacity: 0;
     transition: 0.25s ease;
 }
@@ -541,15 +548,15 @@ body, button {
     10%, 90% {
         transform: translate3d(-1px, 0, 0);
     }
-    
+
     20%, 80% {
         transform: translate3d(2px, 0, 0);
     }
-  
+
     30%, 50%, 70% {
         transform: translate3d(-4px, 0, 0);
     }
-  
+
     40%, 60% {
         transform: translate3d(4px, 0, 0);
     }
@@ -559,11 +566,7 @@ body, button {
 .loginField {
     font-family: 'Avenir Book';
     background: none;
-    border-width: 1.5px 0px 0px 0px;
-    border-style: solid;
     width: 250px;
-    margin-bottom: 20px;
-    border-color: #fff;
     color: rgba(255, 255, 255, 0.75);
     font-weight: bold;
     text-align: center;
@@ -571,6 +574,7 @@ body, button {
     padding: 7.5px;
     font-size: 10px;
     letter-spacing: 1px;
+    border: none;
 }
 .loginField:focus {
     outline: none;
@@ -785,7 +789,7 @@ body, button {
 
 /* Disclaimer text styles. */
 .loginDisclaimerText {
-    font-size: 7px;
+    font-size: 12px;
     color: #848484;
     font-weight: bold;
     text-align: center;
@@ -3236,7 +3240,7 @@ input:checked + .toggleSwitchSlider:before {
     top: 25px;
     display: none;
 }
- 
+
 /* Left side of launch details container, displays percentage and a divider. */
 #launch_details_left {
     display: flex;
@@ -3764,14 +3768,14 @@ input:checked + .toggleSwitchSlider:before {
 /* Rotating animation for the spinner. */
 @keyframes rotating {
     from {
-        transform: rotate(0deg);
+        transform: rotate(360deg);
     }
     to {
-        transform: rotate(360deg);
+        transform: rotate(0deg);
     }
 }
 
 /* Class which is applied when the spinner image is spinning. */
 .rotating {
-    animation: rotating 10s linear infinite;
+    animation: rotating 5s linear infinite;
 }

@@ -47,10 +47,10 @@ if(!isDev){
             case 'update-available':
                 loggerAutoUpdaterSuccess.log('New update available', info.version)
                 
-                if(process.platform === 'darwin'){
+                // if(process.platform === 'darwin'){
                     info.darwindownload = `https://github.com/dscalzi/HeliosLauncher/releases/download/v${info.version}/helioslauncher-setup-${info.version}.dmg`
                     showUpdateUI(info)
-                }
+                // }
                 
                 populateSettingsUpdateInformation(info)
                 break
@@ -65,7 +65,7 @@ if(!isDev){
                 break
             case 'update-not-available':
                 loggerAutoUpdater.log('No new update found.')
-                settingsUpdateButtonStatus('Check for Updates')
+                settingsUpdateButtonStatus('Check for updates')
                 break
             case 'ready':
                 updateCheckListener = setInterval(() => {

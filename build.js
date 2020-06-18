@@ -1,8 +1,8 @@
 const builder = require('electron-builder')
 const Platform = builder.Platform
 
-function getCurrentPlatform(){
-    switch(process.platform){
+function getCurrentPlatform() {
+    switch (process.platform) {
         case 'win32':
             return Platform.WINDOWS
         case 'darwin':
@@ -18,10 +18,10 @@ function getCurrentPlatform(){
 builder.build({
     targets: (process.argv[2] != null && Platform[process.argv[2]] != null ? Platform[process.argv[2]] : getCurrentPlatform()).createTarget(),
     config: {
-        appId: 'helioslauncher',
-        productName: 'Helios Launcher',
-        artifactName: '${productName}-setup-${version}.${ext}',
-        copyright: 'Copyright © 2018-2020 Daniel Scalzi',
+        appId: 'adrianlauncher',
+        productName: 'Adrian\'s Modpack Launcher',
+        artifactName: 'adrianlauncher-${version}.${ext}',
+        copyright: 'Copyright © 2018-2020 Adrian\'s Modpack',
         directories: {
             buildResources: 'build',
             output: 'dist'
@@ -29,16 +29,16 @@ builder.build({
         win: {
             target: [
                 {
-                    target: 'nsis',
+                    target: 'nsis-web',
                     arch: 'x64'
                 }
             ]
         },
         nsis: {
-            oneClick: false,
+            oneClick: true,
             perMachine: false,
             allowElevation: true,
-            allowToChangeInstallationDirectory: true
+            allowToChangeInstallationDirectory: false,
         },
         mac: {
             target: 'dmg',
@@ -46,8 +46,8 @@ builder.build({
         },
         linux: {
             target: 'AppImage',
-            maintainer: 'Daniel Scalzi',
-            vendor: 'Daniel Scalzi',
+            maintainer: 'Adrian\'s Modpack',
+            vendor: 'Adrian\'s Modpack',
             synopsis: 'Modded Minecraft Launcher',
             description: 'Custom launcher which allows users to join modded servers. All mods, configurations, and updates are handled automatically.',
             category: 'Game'
@@ -59,7 +59,14 @@ builder.build({
         extraResources: [
             'libraries'
         ],
-        asar: true
+        asar: true,
+        publish: [
+            {
+                provider: 'generic',
+                url: 'https://minecraft.adriangonz.com/launcher/',
+                channel: 'latest',
+            }
+        ],
     }
 }).then(() => {
     console.log('Build complete!')

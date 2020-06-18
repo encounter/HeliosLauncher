@@ -323,7 +323,7 @@ function asyncSystemScan(mcVersion, launchAfter = true){
                 // Show this information to the user.
                 setOverlayContent(
                     'No Compatible<br>Java Installation Found',
-                    'In order to join WesterosCraft, you need a 64-bit installation of Java 8. Would you like us to install a copy? By installing, you accept <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle\'s license agreement</a>.',
+                    'In order to launch Minecraft, you need a 64-bit installation of Java 8. Would you like us to install a copy? By installing, you accept <a href="http://www.oracle.com/technetwork/java/javase/terms/license/index.html">Oracle\'s license agreement</a>.',
                     'Install Java',
                     'Install Manually'
                 )
@@ -768,7 +768,7 @@ const newsContent                   = document.getElementById('newsContent')
 const newsArticleTitle              = document.getElementById('newsArticleTitle')
 const newsArticleDate               = document.getElementById('newsArticleDate')
 const newsArticleAuthor             = document.getElementById('newsArticleAuthor')
-const newsArticleComments           = document.getElementById('newsArticleComments')
+// const newsArticleComments           = document.getElementById('newsArticleComments')
 const newsNavigationStatus          = document.getElementById('newsNavigationStatus')
 const newsArticleContentScrollable  = document.getElementById('newsArticleContentScrollable')
 const nELoadSpan                    = document.getElementById('nELoadSpan')
@@ -1062,11 +1062,11 @@ document.addEventListener('keydown', (e) => {
  */
 function displayArticle(articleObject, index){
     newsArticleTitle.innerHTML = articleObject.title
-    newsArticleTitle.href = articleObject.link
+    // newsArticleTitle.href = articleObject.link
     newsArticleAuthor.innerHTML = 'by ' + articleObject.author
     newsArticleDate.innerHTML = articleObject.date
-    newsArticleComments.innerHTML = articleObject.comments
-    newsArticleComments.href = articleObject.commentsLink
+    // newsArticleComments.innerHTML = articleObject.comments
+    // newsArticleComments.href = articleObject.commentsLink
     newsArticleContentScrollable.innerHTML = '<div id="newsArticleContentWrapper"><div class="newsArticleSpacerTop"></div>' + articleObject.content + '<div class="newsArticleSpacerBot"></div></div>'
     Array.from(newsArticleContentScrollable.getElementsByClassName('bbCodeSpoilerButton')).forEach(v => {
         v.onclick = () => {
@@ -1101,8 +1101,8 @@ function loadNews(){
                     const date = new Date(el.find('pubDate').text()).toLocaleDateString('en-US', {month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: 'numeric'})
 
                     // Resolve comments.
-                    let comments = el.find('slash\\:comments').text() || '0'
-                    comments = comments + ' Comment' + (comments === '1' ? '' : 's')
+                    // let comments = el.find('slash\\:comments').text() || '0'
+                    // comments = comments + ' Comment' + (comments === '1' ? '' : 's')
 
                     // Fix relative links in content.
                     let content = el.find('content\\:encoded').text()
@@ -1112,20 +1112,20 @@ function loadNews(){
                         content = content.replace(`"${matches[1]}"`, `"${newsHost + matches[1]}"`)
                     }
 
-                    let link   = el.find('link').text()
+                    // let link   = el.find('link').text()
                     let title  = el.find('title').text()
                     let author = el.find('dc\\:creator').text()
 
                     // Generate article.
                     articles.push(
                         {
-                            link,
+                            // link,
                             title,
                             date,
                             author,
                             content,
-                            comments,
-                            commentsLink: link + '#comments'
+                            // comments,
+                            // commentsLink: link + '#comments'
                         }
                     )
                 }
